@@ -11,8 +11,7 @@
 
 
 
-const secretNumber  = Math.trunc(Math.random() * 20) + 1;
-
+let secretNumber  = Math.trunc(Math.random() * 20) + 1;
 
 let score = 20;
 let highScore = 0;
@@ -32,8 +31,8 @@ document.querySelector('.check').addEventListener('click', function ()  {
     //  displays secret number
     document.querySelector('.secretNumber').textContent = secretNumber;
 
-    //  adds 10 to high score
-    highScore = highScore + 10;
+    //  adds 5 to high score
+    highScore = highScore + 5;
     document.querySelector('.highscore').textContent = highScore;
 
     //  styles when correct number is guessed
@@ -55,12 +54,12 @@ document.querySelector('.check').addEventListener('click', function ()  {
     
     // When guess too low
   }   else if (guess < secretNumber)  {
-    score = document.querySelector('.score').textContent = score;
+    // score = document.querySelector('.score').textContent = score;
 
   } if (score > 1)  {
       document.querySelector('.message').textContent = "😱 Too low!";
       score--;
-      score = document.querySelector('.score').textContent = score; 
+      document.querySelector('.score').textContent = score; 
     }  else {
       document.querySelector('.message').textContent = '🧨 You lost the game.';
     }
@@ -70,13 +69,17 @@ document.querySelector('.check').addEventListener('click', function ()  {
 // Select the element with the 'again' class and attach a click event handler
     //  In the handler function, restore initial values of the score and secretNumber variables
     document.querySelector('.again').addEventListener('click', function()  {
-      Number(document.querySelector('.guess').value);
-      console.log(guess, typeof guess);
-
-      document.querySelector('body').style.backgroundColor = '#222';
-      document.querySelector('.secretNumber').style.width = '15rem';  
+      score = 20;
       
-    });
+      document.querySelector('.highscore').textContent = highScore;
+      secretNumber  = Math.trunc(Math.random() * 20) + 1;
+      document.querySelector('.message').textContent = 'Start guessing....';
+      document.querySelector('.score').textContent = score;
+      document.querySelector('.secretNumber').textContent = '?';
+      document.querySelector('.guess').value = '';
+      document.querySelector('body').style.backgroundColor = '#222';
+      document.querySelector('.secretNumber').style.width = '15rem';
+  });
 
 ///////////////////////////////////////
 // Coding Challenge #1

@@ -32,8 +32,12 @@ document.querySelector('.check').addEventListener('click', function ()  {
     document.querySelector('.secretNumber').textContent = secretNumber;
 
     //  adds 5 to high score
-    highScore = highScore + 5;
-    document.querySelector('.highscore').textContent = highScore;
+    if(score > highScore)  {
+      highScore = score;
+      document.querySelector('.highScore').textContent = highScore;
+    }
+    // highScore = highScore + 5;
+    
 
     //  styles when correct number is guessed
     document.querySelector('body').style.backgroundColor = '#03fc03';
@@ -71,7 +75,7 @@ document.querySelector('.check').addEventListener('click', function ()  {
     document.querySelector('.again').addEventListener('click', function()  {
       score = 20;
       
-      document.querySelector('.highscore').textContent = highScore;
+      document.querySelector('.highScore').textContent = highScore;
       secretNumber  = Math.trunc(Math.random() * 20) + 1;
       document.querySelector('.message').textContent = 'Start guessing....';
       document.querySelector('.score').textContent = score;
